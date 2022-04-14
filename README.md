@@ -3,13 +3,17 @@
 
 「攻塔小兵」為一款運用AR擴增實境技術，藉由掃描空間中的平面生成敵方高塔與玩家點擊螢幕生成我方士兵，進而進行戰鬥並以取得最高分為目標的遊戲。 
 
+## Download
+
+1.點擊ARtest.apk文件
+
+2.點擊Download即可下載安裝
 
 ## 背景說明
 
 AR擴增實境技術（以下簡稱AR）是一藉由使用攝影機偵測現實空間，讓螢幕中的現實環境與虛擬物件同時出現，將「現實環境影像」及「電腦虛擬影像」互相結合的一種技術，能夠實現現實與虛擬融合的景象，同時亦可結合互動要素，達到更加直觀且具趣味的體驗方式。
 
 相比VR虛擬實境對於設備及體驗環境的高要求，只需要一台行動裝置便能體驗的AR技術能更加靈活地運用在活動及展演之中，因此我們選擇使用AR來製作這次的專案。 我們希望製作一款在使用AR的前提下運行的遊戲，探討關於AR技術與遊戲運用的更多可能性。
-
 
 ## 遊戲內容
 
@@ -53,4 +57,4 @@ AR擴增實境技術（以下簡稱AR）是一藉由使用攝影機偵測現實�
 
 ## 影片展示
 
-https://youtu.be/_w3NBxeHyDA
+[![YouTube Channel Views](https://img.shields.io/youtube/channel/views/UCqVS5luSvVJy0vsCLzZDB7Q?style=social&label=YouTube)](https://youtu.be/_w3NBxeHyDA)
