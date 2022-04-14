@@ -5,8 +5,8 @@
 
 ## 裝置需求
 
-Android 7.0或Android 8.0以上
-且可以支援ARCore的Android裝置
+* Android 7.0或Android 8.0以上
+* 支援ARCore
 
 ## Download
 
