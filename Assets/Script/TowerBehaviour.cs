@@ -16,7 +16,7 @@ public class TowerBehaviour : MonoBehaviour
 
     Vector3 rotateToTarget;
     int counter = 0;
-    int step = 60;
+    int step = 10;
     Vector3 lastVector;
 
     private float ftime;
@@ -24,17 +24,17 @@ public class TowerBehaviour : MonoBehaviour
 
     GameObject bullet;
 
-    public float towerLife = 100;
+    //public float towerLife;
     public Text HPText;
-    bool gameover = false;
 
-    float speed = 0.5f;
+    float speed = 2f;
 
     // Start is called before the first frame update
     void Start()
     {
         target = null;
-        DisplayHP();
+        HPText = GameObject.Find("UIManager").GetComponent<UIMain>().hpText;
+        //DisplayHP();
         //rotateToTarget = Quaternion.LookRotation(Vector3.back).eulerAngles;
     }
     void RotateTower()
@@ -71,13 +71,11 @@ public class TowerBehaviour : MonoBehaviour
 
             }
         }
-        if (getTowerLife() <= 0)
-        {
-            gameover = true;
-            Destroy(gameObject);
-        }
     }
-
+    public void DestroyTower() 
+    {
+        Destroy(gameObject);
+    }
     void UpdateTower()
     {
         if (targetFound)
@@ -85,20 +83,20 @@ public class TowerBehaviour : MonoBehaviour
             Debug.Log("found");
 
             //rotate
-            if (rotateCompleted)
+            if (rotateCompleted)//旋轉完成
             {               
-                Shoot();
+                Shoot();//射擊小兵
             }
             else
             {
-                RotateTower();
+                RotateTower();//旋轉塔
             }
         }
         else
         {
             Debug.Log("Not found");
 
-            FindTarget();
+            FindTarget();//尋找目標小兵
         }
     }
     void FindTarget()
@@ -130,9 +128,9 @@ public class TowerBehaviour : MonoBehaviour
     {
         if (bullet == null)
         {
-            bullet = Instantiate(bulletPrefab, gun.transform.position, Quaternion.identity);
+            bullet = Instantiate(bulletPrefab, gun.transform.position, Quaternion.identity);//在槍口創造子彈
         }
-        bullet.transform.LookAt(target.transform.position);
+        bullet.transform.LookAt(target.transform.position);//子彈對準目標小兵
 
         //子彈移動速度
         bullet.transform.position += bullet.transform.forward * speed * Time.deltaTime;
@@ -140,33 +138,36 @@ public class TowerBehaviour : MonoBehaviour
 
         if (bulletdirection.magnitude < 0.05f)
         {
-            Destroy(bullet);
-            Destroy(target);
-            target.GetComponent<SoldierBehaviour>().KillSoldier();
-            nextshoot = true;
+            Destroy(bullet);//摧毀子彈
+            Destroy(target);//摧毀目標小兵
+            GameObject.Find("UIManager").GetComponent<UIMain>().AddLoss();//取得UI程式的小兵擊殺數計算
+            nextshoot = true;//執行下一個目標
         }
 
         //bullet.GetComponent<BulletBehaviour>().SetDirection(direction);
     }
-    public float getTowerLife()
-    {
-        return towerLife;
-    }
+    //add:GameObject.Find("UIManager").GetComponent<UIMain>().gotoTheEnd();
+    //public float getTowerLife()//塔生命
+    //{
+    //    return towerLife;//回傳塔生命
+    //}
     //塔掉血
-    public void ReduceBlood()
+    //public void ReduceBlood()//塔扣血
+    //{
+    //    //towerLife -= 10f;
+    //    //DisplayHP();
+    //    GameObject.Find("UIManager").GetComponent<UIMain>().SubHP();//取得UI程式的扣血
+    //}
+    //public void DisplayHP() 
+    //{
+    //    HPText.text = towerLife.ToString();
+    //}
+    void OnDestroy()//摧毀後執行
     {
-        towerLife -= 5f;
-        DisplayHP();
-    }
-    public void DisplayHP() 
-    {
-        HPText.text = towerLife.ToString();
-    }
-    void OnDestroy()
-    {
-        if (bullet != null) 
+        if (bullet != null) //子彈存在的話
         {
-            Destroy(bullet);
+            Destroy(bullet);//摧毀子彈
         }
+        //GetComponent<ARController>().SetAllPlanesActive(true);
     }
 }

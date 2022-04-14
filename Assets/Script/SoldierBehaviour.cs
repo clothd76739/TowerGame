@@ -22,9 +22,6 @@ public class SoldierBehaviour : MonoBehaviour
     bool targetFound = false;
     bool rotateCompleted = false;
 
-    public int soldierKill;
-    public Text KillText;
-
     void Start()
     {
         tower = GameObject.FindGameObjectWithTag("Tower");
@@ -161,15 +158,20 @@ public class SoldierBehaviour : MonoBehaviour
         if (bulletdirection.magnitude < 0.05f)
         {
             //Instantiate(bullet, transform.position, Quaternion.identity);
-            tower.GetComponent<TowerBehaviour>().ReduceBlood();
+            GameObject.Find("UIManager").GetComponent<UIMain>().SubHP();//取得UI程式的扣血
             Destroy(bullet);
         }
     }
-    public void KillSoldier()
-    {
-        soldierKill += 1;
-        KillText.text = soldierKill.ToString();
-    }
+    //public void clanerSoldier() 
+    //{
+    //    Destroy(gameObject);
+    //}
+    //public void KillSoldier()
+    //{
+    //    soldierKill += 1;
+    //    KillText.text = soldierKill.ToString();
+    //    UIMain.endlossvalue = soldierKill;
+    //}
     void OnDestroy()
     {
         if (bullet != null)

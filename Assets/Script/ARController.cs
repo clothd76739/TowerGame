@@ -31,19 +31,29 @@ public class ARController : MonoBehaviour
 
     float averageHeight;
 
-    bool Towerone;
+    public bool towerOne;
+    //ARPlaneManager m_ARPlaneManager;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rayManager = GetComponent<ARRaycastManager>();
         indicator.SetActive(false);
         center = new Vector3(0.5f, 0.5f);
         hits = new List<ARRaycastHit>();
-        Towerone = true;
+        //m_ARPlaneManager = GetComponent<ARPlaneManager>();
         heights = new List<float>();
+        towerTrue();
     }
-
+    public void towerTrue()
+    {
+        towerOne = true;
+    }
+    //public void SetAllPlanesActive(bool value)
+    //{
+    //    foreach (var plane in m_ARPlaneManager.trackables)
+    //        plane.gameObject.SetActive(value);
+    //}
     //void SetAllPlanesActive(bool value)
     //{
     //    foreach (var plane in rayManager.trackables)
@@ -87,11 +97,11 @@ public class ARController : MonoBehaviour
 
             averageHeight = sumHeight / heights.Count;
 
-            foreach (GameObject soldiers in GameObject.FindGameObjectsWithTag("Soldier"))
+            foreach (GameObject cube in GameObject.FindGameObjectsWithTag("Soldier"))
             {
-                Vector3 position = soldiers.transform.position;
+                Vector3 position = cube.transform.position;
 
-                soldiers.transform.position = new Vector3(position.x, averageHeight, position.z);
+                cube.transform.position = new Vector3(position.x, averageHeight, position.z);
             }//
 
 
@@ -121,20 +131,15 @@ public class ARController : MonoBehaviour
         if (indicatorValid == false) return;
         if (Input.touchCount == 0) return;
         if (Input.GetTouch(0).phase != TouchPhase.Began) return;
-        
 
-
-        if (Towerone)
+        if (towerOne)
         {
             tower = Instantiate(towerPrefab, indicator.transform.position, indicator.transform.rotation);
-            Towerone = false;
+            towerOne = false;
         }
         else
         {
             model = Instantiate(modelPrefab, indicator.transform.position, indicator.transform.rotation);
         }
-    }
-
-
-
+    } 
 }
