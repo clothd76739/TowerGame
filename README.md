@@ -60,6 +60,8 @@ AR擴增實境技術（以下簡稱AR）是一藉由使用攝影機偵測現實�
 * 高塔建模
 * 小兵建模
 
-## 影片展示
+## DEMO
 
-[![YouTube Channel Views](https://img.shields.io/youtube/channel/views/UCqVS5luSvVJy0vsCLzZDB7Q?style=social&label=YouTube)](https://youtu.be/_w3NBxeHyDA)
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/_w3NBxeHyDA/0.jpg)](https://www.youtube.com/watch?v=_w3NBxeHyDA "v0.1版DEMO")
+
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/lGox_9NoZtU/0.jpg)](https://www.youtube.com/watch?v=lGox_9NoZtU "v0.2版DEMO")
