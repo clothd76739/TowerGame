@@ -53,4 +53,4 @@ AR擴增實境技術（以下簡稱AR）是一藉由使用攝影機偵測現實�
 
 ## 影片展示
 
-https://drive.google.com/file/d/1CvDcoRbJRLDlmKyoNCw8Dvg3gKn-bZvO/view?usp=sharing
+https://youtu.be/_w3NBxeHyDA
